@@ -70,32 +70,52 @@ public class BootjpaexampleApplication {
 	
 	//---------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXX-----------------------
 	//custom finder methods
-	Iterable<User> usersbyCity=userRepository.findByCity("Delhi");
-	usersbyCity.forEach(u1->{System.out.println(u1);});
-	System.out.println("----------------XXXXXXXXXXX------------------");
-	userRepository.findByCityAndStatus("Delhi","Teacher").forEach(fcs->{
-		System.out.println(fcs);
+//	Iterable<User> usersbyCity=userRepository.findByCity("Delhi");
+//	usersbyCity.forEach(u1->{System.out.println(u1);});
+//	System.out.println("----------------XXXXXXXXXXX------------------");
+//	userRepository.findByCityAndStatus("Delhi","Teacher").forEach(fcs->{
+//		System.out.println(fcs);
+//	});
+//	
+//	//---------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXX-----------------------
+//	//findByCityLikeAndNameLike
+//	System.out.println("---------------------XXXXXXXXXXXXXx-------------------");
+//	userRepository.findByCityLikeAndNameLike("%u%","%a%").forEach(fcs->{
+//		System.out.println(fcs);
+//	});;
+//	
+//	System.out.println("---------------------XXXXXXXXXXXXXx-------------------");
+//	userRepository.findByCityContaining("j").forEach(fcs->{
+//		System.out.println(fcs);
+//	});
+//	
+//	System.out.println("---------------------XXXXXXXXXXXXXXXX-------------------");
+//	Collection<String> collection=List.of("Jaipur","Chennai","Jalandhar");
+//	userRepository.findByCityIn(collection).forEach(fcs->{
+//		System.out.println(fcs);
+//	});
+	//----------------->Query Language<--------------------------------------------
+	userRepository.getAllCities().forEach(c->{
+		System.out.println(c);
 	});
 	
-	//---------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXX-----------------------
-	//findByCityLikeAndNameLike
-	System.out.println("---------------------XXXXXXXXXXXXXx-------------------");
-	userRepository.findByCityLikeAndNameLike("%u%","%a%").forEach(fcs->{
-		System.out.println(fcs);
-	});;
-	
-	System.out.println("---------------------XXXXXXXXXXXXXx-------------------");
-	userRepository.findByCityContaining("j").forEach(fcs->{
-		System.out.println(fcs);
+	userRepository.getUSerByCityName("Delhi").forEach(c->{
+		System.out.println(c);
+	});
+	//-----------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXx-----------------
+	userRepository.getDataByNameAndCity("Tara","Jaipur").forEach(c->{
+		System.out.println(c);
 	});
 	
-	System.out.println("---------------------XXXXXXXXXXXXXXXX-------------------");
-	Collection<String> collection=List.of("Jaipur","Chennai","Jalandhar");
-	userRepository.findByCityIn(collection).forEach(fcs->{
-		System.out.println(fcs);
-	});
+	//----------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX---------------
+	userRepository.getAllUsers().forEach(e->{System.out.println(e);});
+	
+	
+	
+	
 	}
-
+	//--------------------------------XXXXXXXXXXXX-------------------------------------
+	
 }
 
 
