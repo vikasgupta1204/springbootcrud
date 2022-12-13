@@ -71,7 +71,22 @@ public class BootjpaexampleApplication {
 	//custom finder methods
 	Iterable<User> usersbyCity=userRepository.findByCity("Delhi");
 	usersbyCity.forEach(u1->{System.out.println(u1);});
+	System.out.println("----------------XXXXXXXXXXX------------------");
+	userRepository.findByCityAndStatus("Delhi","Teacher").forEach(fcs->{
+		System.out.println(fcs);
+	});
 	
+	//---------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXX-----------------------
+	//findByCityLikeAndNameLike
+	System.out.println("---------------------XXXXXXXXXXXXXx-------------------");
+	userRepository.findByCityLikeAndNameLike("%u%","%a%").forEach(fcs->{
+		System.out.println(fcs);
+	});;
+	
+	System.out.println("---------------------XXXXXXXXXXXXXx-------------------");
+	userRepository.findByCityContaining("j").forEach(fcs->{
+		System.out.println(fcs);
+	});
 	
 	}
 
