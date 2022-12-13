@@ -1,5 +1,6 @@
 package com.jpa.test;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -88,6 +89,11 @@ public class BootjpaexampleApplication {
 		System.out.println(fcs);
 	});
 	
+	System.out.println("---------------------XXXXXXXXXXXXXXXX-------------------");
+	Collection<String> collection=List.of("Jaipur","Chennai","Jalandhar");
+	userRepository.findByCityIn(collection).forEach(fcs->{
+		System.out.println(fcs);
+	});
 	}
 
 }
