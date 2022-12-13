@@ -21,11 +21,15 @@ public class BootjpaexampleApplication {
 //	user.setName("Ishan");
 //	user.setCity("Chennai");
 //	user.setStatus("Cricketer");
-//	User user1=new User("Rajesh","Mumbaai","Programmer");
+//	User user1=new User("Rajesh","Mumbai","Programmer");
 //	User user2=new User("Jagga","Delhi","Analyst");
 //	User user3=new User("Trish","Kota","Model");
-//	User user4=new User("Umesh","Lucknow","Farmer");
-//	List<User> users=List.of(user,user1,user2,user3,user4);
+//	User user4=new User("Umesh","Lucknow","Cricketer");
+//	User user5=new User("Govind","Delhi","Poltician");
+//	User user6=new User("Gopal","Delhi","Teacher");
+//	User user7=new User("Radhe","Delhi","Model");
+//	User user8=new User("Tara","Jaipur","Teacher");
+//	List<User> users=List.of(user,user1,user2,user3,user4,user5,user6 ,user7 ,user8);
 //	//save multiple objects
 //	Iterable<User> getUsers=userRepository.saveAll(users);
 //	getUsers.forEach(userr->{
@@ -52,16 +56,21 @@ public class BootjpaexampleApplication {
 	
 //--------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXx----------------------
 	//to fetch all the records in a table
-	Iterable<User> itr=  userRepository.findAll();
-	itr.forEach(user->{
-		System.out.println(user	);
-	});
+//	Iterable<User> itr=  userRepository.findAll();
+//	itr.forEach(usr->{
+//		System.out.println(usr	);
+//	});
 	
 	//userRepository.deleteById(11);
-	//System.out.println("Deleted");
-	Iterable<User> itr1=  userRepository.findAll();
-	userRepository.deleteAll(itr1);
+//	System.out.println("Deleted");
+//	Iterable<User> itr1=  userRepository.findAll();
+//	userRepository.deleteAll(itr1);
 	
+	
+	//---------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXX-----------------------
+	//custom finder methods
+	Iterable<User> usersbyCity=userRepository.findByCity("Delhi");
+	usersbyCity.forEach(u1->{System.out.println(u1);});
 	
 	
 	}
