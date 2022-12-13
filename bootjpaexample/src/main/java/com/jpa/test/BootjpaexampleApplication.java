@@ -51,10 +51,18 @@ public class BootjpaexampleApplication {
 //	System.out.println(u);
 	
 //--------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXx----------------------
+	//to fetch all the records in a table
 	Iterable<User> itr=  userRepository.findAll();
 	itr.forEach(user->{
 		System.out.println(user	);
 	});
+	
+	//userRepository.deleteById(11);
+	//System.out.println("Deleted");
+	Iterable<User> itr1=  userRepository.findAll();
+	userRepository.deleteAll(itr1);
+	
+	
 	
 	}
 
