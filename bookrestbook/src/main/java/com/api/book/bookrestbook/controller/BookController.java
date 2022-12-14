@@ -22,6 +22,7 @@ private BookService  bookService;
 @RequestMapping(value="/books",method=RequestMethod.GET)*/
   @GetMapping("/books")  
 public List<Book> getBooks(){
+    System.out.println("Book added");
     return this.bookService.getAllBooks();
     
 }  
