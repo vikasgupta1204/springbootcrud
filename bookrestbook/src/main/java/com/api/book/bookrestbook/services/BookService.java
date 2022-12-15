@@ -2,6 +2,7 @@ package com.api.book.bookrestbook.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -30,5 +31,37 @@ public class BookService {
     return book;
     
     //return new Book();
+  }
+
+  public Book addBook(Book b)
+  {
+    books.add(b);
+    return b;
+  }
+
+  public List<Book> deleteBook(int id)
+  {
+    //method 1
+    // if(books.stream().anyMatch(e->e.getId()==id)){
+    //     Book b=null;
+    //     b=books.stream().filter(e->e.getId()==id).findFirst().get();
+    //     books.remove(b);
+    // }
+    //method 2
+    // books=books.stream().filter(b->{
+    //     if(b.getId()!=id){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // }).collect(Collectors.toList()) ;
+    
+    //method3
+
+    books =books.stream().filter(b->b.getId()!=id).collect(Collectors.toList());
+
+
+    return books;
+
   }
 }
