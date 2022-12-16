@@ -1,6 +1,9 @@
 package com.api.book.bookrestbook.controller;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,36 +27,73 @@ private BookService  bookService;
 
 /*Jackson converts objects into json ans vice versa
 @RequestMapping(value="/books",method=RequestMethod.GET)*/
+/*ResponseEntity class is used to get the status and object. if there is no book available then 
+ * we can return the status
+ * passing List<Books> in ResponseEntity because it is returning List of books
+ */
   @GetMapping("/books")  
-public List<Book> getBooks(){
-    System.out.println("Book added");
-    return this.bookService.getAllBooks();
-    
-}  
+public ResponseEntity<List<Book>> getBooks(){
+    //System.out.println("Book added");
 
+  List<Book> books= this.bookService.getAllBooks();
+
+  if(books.isEmpty()){
+    /*
+     * status is a static method of Response entity and build method is used to create the objects
+     */
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+  }
+    return ResponseEntity.of(Optional.of(books));
+}  
+/* passing Book parameter in ResponseEntity because i want to return Book object if 
+ * book is found otherwise i want to send the HHttpStatus message
+*/
 @GetMapping("/books/{id}")
-public Book getBook(@PathVariable("id") int id){
-return bookService.getBookById(id);
+public ResponseEntity<Book> getBook(@PathVariable("id") int id){
+  Book book=this.bookService.getBookById(id);
+  if(book==null){
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+  }
+return ResponseEntity.of(Optional.of(book));
 }
 
 //Requesbody automatically converts the data coming in json format into your book object
 @PostMapping("/books")
-public Book addBook(@RequestBody Book b)
+public ResponseEntity<Book> addBook(@RequestBody Book b)
 {
-return this.bookService.addBook(b);
+  Book b1=null;
+  try{
+b1= this.bookService.addBook(b);
+return ResponseEntity.of(Optional.of(b1));
+  }
+catch(Exception e){
+  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+}
 }
 
 @DeleteMapping("/books/{id}")
-public List<Book> deleteBook(@PathVariable("id") int id)
+public ResponseEntity<Void> deleteBook(@PathVariable("id") int id)
 {
-    return this.bookService.deleteBook(id);
+  try{
+   List<Book> b= this.bookService.deleteBook(id);
+    return ResponseEntity.ok().build();
+  }
+  catch(Exception e){
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+  }
 }
 
 //update book handler
 
 @PutMapping("/books/{bookId}")
-public Book updateBook(@RequestBody Book book,@PathVariable("bookId") int bookId){
-this.bookService.updateBook(book,bookId);
-  return book;
+public ResponseEntity<Book> updateBook(@RequestBody Book book,@PathVariable("bookId") int bookId){
+  try{
+  this.bookService.updateBook(book,bookId);
+  }
+  catch(Exception e){
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+  }
+  return ResponseEntity.of(Optional.of(book
+  ));
 }
 }

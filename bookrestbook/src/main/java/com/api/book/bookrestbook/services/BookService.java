@@ -59,20 +59,33 @@ public class BookService {
     
     //method3
 
-    books =books.stream().filter(b->b.getId()!=id).collect(Collectors.toList());
+      List<Book> b1=null;
+      b1 =books.stream().filter(b->b.getId()!=id).collect(Collectors.toList());
+      
+      /*books ={book1,book2,book3} 
+       * 
+      */
 
-
-    return books;
+      if(b1.size()==books.size()){
+       throw new NullPointerException();
+      }
+    return b1;
 
   }
 
 public void updateBook(Book book, int bookId) {
+  boolean flag=false;
+  flag=books.stream().anyMatch(e->e.getId()==bookId);
+  if(flag==false){
+    throw new NullPointerException();
+  }
  books=  books.stream().map(e->
   {
     if(e.getId()==bookId)
     {
       e.setTitle(book.getTitle());
       e.setAuthor(book.getAuthor());
+    
     }
     return e;
   }
