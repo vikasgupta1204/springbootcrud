@@ -2,7 +2,6 @@ package com.api.book.bookrestbook.controller;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -57,14 +56,14 @@ public ResponseEntity<Book> getBook(@PathVariable("id") int id){
 return ResponseEntity.of(Optional.of(book));
 }
 
-//Requesbody automatically converts the data coming in json format into your book object
+//Requestbody automatically converts the data coming in json format into your book object
 @PostMapping("/books")
 public ResponseEntity<Book> addBook(@RequestBody Book b)
 {
   Book b1=null;
   try{
 b1= this.bookService.addBook(b);
-return ResponseEntity.of(Optional.of(b1));
+return ResponseEntity.status(HttpStatus.CREATED).body(b1);
   }
 catch(Exception e){
   return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -75,7 +74,7 @@ catch(Exception e){
 public ResponseEntity<Void> deleteBook(@PathVariable("id") int id)
 {
   try{
-   List<Book> b= this.bookService.deleteBook(id);
+   this.bookService.deleteBook(id);
     return ResponseEntity.ok().build();
   }
   catch(Exception e){
@@ -91,7 +90,7 @@ public ResponseEntity<Book> updateBook(@RequestBody Book book,@PathVariable("boo
   this.bookService.updateBook(book,bookId);
   }
   catch(Exception e){
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
   }
   return ResponseEntity.of(Optional.of(book
   ));
