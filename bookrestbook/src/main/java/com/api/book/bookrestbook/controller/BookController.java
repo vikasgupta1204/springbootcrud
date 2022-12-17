@@ -45,7 +45,7 @@ public ResponseEntity<List<Book>> getBooks(){
     return ResponseEntity.of(Optional.of(books));
 }  
 /* passing Book parameter in ResponseEntity because i want to return Book object if 
- * book is found otherwise i want to send the HHttpStatus message
+ * book is found otherwise i want to send the HttpStatus message
 */
 @GetMapping("/books/{id}")
 public ResponseEntity<Book> getBook(@PathVariable("id") int id){
