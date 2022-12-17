@@ -4,7 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Author {
@@ -14,25 +18,45 @@ public class Author {
     private String first_name;
     private String last_name;
 
+    @OneToOne(mappedBy = "author")  
+    /*to avoid infinite loop as book has author author_id. here we want to avoid creating ano
+    ther column in Author table*/
+    @JsonBackReference
+    /* to avoid infinite recursion we use above annotation as child field will not be converted into json */
+    private Book book;
+
+    @Override
+    public String toString() {
+        return "Author [author_id=" + author_id + ", first_name=" + first_name + ", last_name=" + last_name + ", book="
+                + book + ", language=" + language + "]";
+    }
+
+    public Author(String first_name, String last_name, Book book, String language) {
+
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.book = book;
+        this.language = language;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
     public int getAuthor_id() {
         return author_id;
     }
 
-    @Override
-    public String toString() {
-        return "Author [author_id=" + author_id + ", first_name=" + first_name + ", last_name=" + last_name
-                + ", language=" + language + "]";
-    }
+    
 
     public Author() {
     }
 
-    public Author(int author_id, String first_name, String last_name, String language) {
-        this.author_id = author_id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.language = language;
-    }
+   
 
     public void setAuthor_id(int author_id) {
         this.author_id = author_id;

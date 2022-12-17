@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="books")
 public class Book {
@@ -20,6 +22,11 @@ public class Book {
 
     private String title;
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference  
+    /*To avoid infinite recursion we use JsonManagedReference above parent field
+     * as here Auuthor field will be converted to json but book field in Author class wont be converted
+     * to json hence this will help in avoiding infinite recursion
+     */
     private Author author;
    
     @Override
@@ -45,8 +52,8 @@ public class Book {
     public void setAuthor(Author author) {
         this.author = author;
     }
-    public Book(int id, String title, Author author) {
-        this.id = id;
+    public Book(String title, Author author) {
+     
         this.title = title;
         this.author = author;
     }

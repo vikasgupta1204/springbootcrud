@@ -1,3 +1,3 @@
-from array import array
-arr = array('i', [1, 2, 3, 1, 4, 7, 9, 12])
-print(arr[1:4][1])
+a=[1,[2,3],4,5]
+result = lambda x: list(map(lambda y:2*y, x)) if isinstance(x,list) else lambda x:3*x
+print(result(a))
