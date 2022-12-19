@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+<h1> This is thymleaf content</h1>
+<h1 th:text="${name}"></h1>
+<h2 th:text="${currentDate}"></h2>
+<h2 th:text="${#strings.toUpperCase(name)}"></h2>
+<div th:with="a=5,b=67, n=${name}">
+
+    <h1>Value of a and b is:<span th:text="${a}"></span></h1>
+    
+    <h1 th:text="'Value of b is:'+${b}"></h1>   <!--To concatenate value with string--> 
+    <h1>local value of n is <span th:text="${n}"></span></h1>    
+    <h1><span th:text="'sum of '+${a}+' and '+${b}+'='+${a+b}"></span></h1>
+</div>
+</body>
+</html>
