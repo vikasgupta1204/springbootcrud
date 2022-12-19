@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+<h1>Going to traverse list using loop</h1>
+<h1 th:text="${list}"></h1>
+<li th:each="n:${list}">   <!--To loop through a collection-->
+<span th:text="${n}"></span>
+</li>
+<br>
+<br>
+<li th:each="n,status:${list}">   <!--To loop through a collection-->
+    <span th:text="${status.index}+' '+${n}"></span>
+    </li>
+
+<br>
+<br>
+<li th:each="n,status:${list}">   <!--To loop through a collection-->
+    <span th:style="${status.odd}?'font-weight:bold':' '"  th:text="${status.index}+' '+${n}"></span>
+</li>
+
+</body>
+</html>
