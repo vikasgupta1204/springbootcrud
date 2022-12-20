@@ -33,4 +33,15 @@ public class MyController {
         m.addAttribute("list",List.of("Vikas","Raju","Vivek","Gaurav","Shekhar"));
         return "iterate";
     }
+
+    /*This handler is for executing conditional statements in thymeleaf */
+    @GetMapping("/condition")
+    public String conditionHandler(Model m){
+        System.out.println("conditon handler executed....");
+        m.addAttribute("isActive", true);
+        m.addAttribute("gender", "M");
+        List<Integer> list=List.of(212,233);
+        m.addAttribute("mylist", list);
+        return "condition";
+    }
 }
