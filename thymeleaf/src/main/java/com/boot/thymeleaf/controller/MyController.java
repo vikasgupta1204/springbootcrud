@@ -1,6 +1,7 @@
 package com.boot.thymeleaf.controller;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -48,6 +49,9 @@ public class MyController {
     //handler for including fragments
     @GetMapping("/service")
     public String serviceHanlder(Model m){
+        m.addAttribute("title", "Passing title from handler");
+        m.addAttribute("subtitle", LocalDate.now().toString());
+
         return "service";
     }
 }

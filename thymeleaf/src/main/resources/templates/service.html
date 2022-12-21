@@ -8,15 +8,17 @@
 <body>
 <!--Going to include footer here-->
 <h1>This is Service page</h1>
-<footer id="hostTag" th:include="footer::footer1">
+<!--Passing dynamic content from service page to footer-->
+<!--Fetching title and subtitle value from handler and funrther passing the content to footer page-->
+<footer id="hostTag" th:replace="footer::footer1(${title},${subtitle})">
 
 </footer>
 
-<footer id="hostTag" th:replace="footer::footer1">
+<!-- <footer id="hostTag" th:replace="footer::footer1">
 
 </footer>
 <footer id="hostTag" th:insert="footer::footer1">
 
-</footer>
+</footer> -->
 </body>
 </html>
