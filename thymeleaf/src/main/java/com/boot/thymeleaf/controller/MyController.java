@@ -54,4 +54,16 @@ public class MyController {
 
         return "service";
     }
+
+    //for new about
+    @GetMapping("/aboutnew")
+    public String newAbout(){
+        return "about_new";
+    }
+
+     //for contact
+     @GetMapping("/contact")
+     public String contact(){
+         return "contact";
+     }
 }
