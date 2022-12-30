@@ -1,0 +1,13 @@
+body{
+    background-color: burlywood;
+}
+
+.container{
+    background-color: darksalmon;
+    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.profile{
+    border-radius: 50%;
+}

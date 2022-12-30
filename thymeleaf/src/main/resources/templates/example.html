@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Example to insert css and images</title>
+<link rel="stylesheet" th:href="@{/css/mystyle.css}"/>
+<script type="text/javascript" th:src="@{js/myjs.js}"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Adding CSS, javascript and image in thymeleaf</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum recusandae debitis optio autem excepturi nulla soluta 
+        nisi, nostrum necessitatibus iure tenetur, sequi temporibus officia obcaecati. Laudantium quis aspernatur quibusdam 
+        voluptate?</p>
+        
+    </div>
+    <div>
+        <img class="profile" th:src="@{/images/shivaji.jpg}"/>
+    </div>
+</body>
+</html>
