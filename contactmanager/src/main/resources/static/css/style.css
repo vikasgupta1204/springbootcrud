@@ -1,5 +1,5 @@
 body{
-    background: cyan;
+    background: black;
 }
 
 .banner{
@@ -7,4 +7,10 @@ body{
     height: 93vh;
     background:black;
     color:wheat
+}
+
+.my-card{
+    padding: 20px;
+    background: white;
+    color: black;
 }
