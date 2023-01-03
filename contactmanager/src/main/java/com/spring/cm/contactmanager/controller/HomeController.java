@@ -1,11 +1,13 @@
 package com.spring.cm.contactmanager.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,13 +50,20 @@ public class HomeController {
    //handler for registering user
 
    @RequestMapping(value="/do_register",method=RequestMethod.POST)
-   public String registerUser(@ModelAttribute("user") User user,@RequestParam(value="agreement",defaultValue = "false") Boolean agreement ,Model model,HttpSession session){
-    
+   public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult bindingresult,@RequestParam(value="agreement",defaultValue = "false") Boolean agreement ,Model model,
+  HttpSession session){
+    /*to catch the validation error BindingResult class is used and @Valid annotation to use the validation done on model class */
   //  model.addAttribut(user);
   try{
     if(!agreement){
         System.out.println("You have not agreed to the terms and conditions!");
         throw new Exception("You have not agreed to the terms and conditions!");
+    }
+    /*if name validation is failed below if block should be executed */
+    if(bindingresult.hasErrors()){
+      System.out.println(bindingresult.toString());
+      model.addAttribute("user", user);
+      return "signup";
     }
   user.setRole("ROLE_USER");
   user.setEnabled(true);
