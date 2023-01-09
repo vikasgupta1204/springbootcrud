@@ -1,0 +1,82 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch ExecutorsExample",
+            "request": "launch",
+            "mainClass": "ExecutorsExample",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "io.github.jiangdequan.Test",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch Derived",
+            "request": "launch",
+            "mainClass": "io.github.jiangdequan.Derived",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch SpringmvcvalidationApplication",
+            "request": "launch",
+            "mainClass": "com.validation.springmvcvalidation.SpringmvcvalidationApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch ThymeleafApplication",
+            "request": "launch",
+            "mainClass": "com.boot.thymeleaf.ThymeleafApplication",
+            "projectName": "thymeleaf"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamTest",
+            "request": "launch",
+            "mainClass": "com.api.book.bookrestbook.testpackage.StreamTest",
+            "projectName": "bookrestbook"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "com.api.book.bookrestbook.testpractice.Test",
+            "projectName": "bookrestbook"
+        },
+        {
+            "type": "java",
+            "name": "Launch BookrestbookApplication",
+            "request": "launch",
+            "mainClass": "com.api.book.bookrestbook.BookrestbookApplication",
+            "projectName": "bookrestbook"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BookrestbookApplication<bookrestbook>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.springboot.bookrestbook.bookrestbook.BookrestbookApplication",
+            "projectName": "bookrestbook",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54709 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=bookrestbook"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ContactmanagerApplication<contactmanager>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.spring.cm.contactmanager.ContactmanagerApplication",
+            "projectName": "contactmanager",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=51519 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=contactmanager"
+        }
+    ]
+}
