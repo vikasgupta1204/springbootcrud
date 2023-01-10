@@ -39,10 +39,12 @@ public class MyConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // TODO Auto-generated method stub
+        /*Methods to configure the behavior of login page spring security */
         http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/user/**").hasRole("USER").antMatchers("/**").permitAll().and().
-        formLogin().loginPage("/signin").and().csrf().disable();
+        formLogin().loginPage("/signin").loginProcessingUrl("/dologin").
+        defaultSuccessUrl("/user/index").
+        failureUrl("/login-fail").and().csrf().disable();
         super.configure(http);
     }
     
