@@ -1,5 +1,5 @@
-console.log("This is script file")
 
+console.log("This is script file")
 const toggleSidebar=()=>{
     if($('.sidebar').is(":visible")){
         //if sidebar visible then close it
