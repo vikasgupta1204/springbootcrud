@@ -21,6 +21,21 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int cid;
     private String name;
+
+    @Override
+    public String toString() {
+        return "{" +
+            " cid='" + getCid() + "'" +
+            ", name='" + getName() + "'" +
+            ", secondname='" + getSecondname() + "'" +
+            ", work='" + getWork() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", imagepath='" + getImagepath() + "'" +
+            ", phone='" + getPhone() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", user='" + getUser() + "'" +
+            "}";
+    }
     private  String secondname;
     private String work;
     private String email;
