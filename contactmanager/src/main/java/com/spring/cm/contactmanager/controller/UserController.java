@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.standard.inline.StandardCSSInliner;
 
+import com.spring.cm.contactmanager.dao.ContactRepository;
 import com.spring.cm.contactmanager.dao.UserRepository;
 import com.spring.cm.contactmanager.entities.Contact;
 import com.spring.cm.contactmanager.entities.User;
@@ -34,6 +36,10 @@ import antlr.StringUtils;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ContactRepository contactRepository;
+
     @RequestMapping("/index")
     public String dashboard(Model model,Principal principal){
         model.addAttribute("title", "User Dashboard");
@@ -91,5 +97,20 @@ public class UserController {
             session.setAttribute("message",new Message("Something went wrong! Try again", "danger"));
         }
         return "normal/add_contact_form";
+    }
+
+    //show contacts handler
+    @GetMapping("/show-contacts")
+    public String showContacts(Model model,Principal principal){
+        model.addAttribute("title","Show User Contacts");
+        String userName=principal.getName();
+        User user=this.userRepository.getUserByUserName(userName);
+        List<Contact> contacts=this.contactRepository.findContactByUser(user.getId());
+        model.addAttribute("contacts",contacts);
+        /*send contact list to view
+        String username=principal.getName();
+        User user=this.userRepository.getUserByUserName(username);
+       List<Contact> contacts= user.getContacts();*/
+        return "normal/show_contacts";
     }
 }
