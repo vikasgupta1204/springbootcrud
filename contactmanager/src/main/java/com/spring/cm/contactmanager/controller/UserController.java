@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -76,6 +77,8 @@ public class UserController {
        /*Processing and uploading file */
        if(file.isEmpty()){
         /*if the file is empty then try our message */
+        System.out.println("file is empty");
+        contact.setImagepath("contact.png");
        }
        else{
             // /*Upload the file to folder and update the contact */
@@ -119,5 +122,15 @@ public class UserController {
         User user=this.userRepository.getUserByUserName(username);
        List<Contact> contacts= user.getContacts();*/
         return "normal/show_contacts";
+    }
+
+    //display contact details
+    @GetMapping("/contact/{cid}")
+    public String showContactDetails(@PathVariable("cid") Integer cid,Model model){
+        System.out.println("CID->"+cid);
+        Optional<Contact> contactOptional=this.contactRepository.findById(cid);
+        Contact contact=contactOptional.get();
+        model.addAttribute("contact", contact);
+        return "normal/contact_detail";
     }
 }

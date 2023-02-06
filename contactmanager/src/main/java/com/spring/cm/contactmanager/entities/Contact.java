@@ -41,7 +41,7 @@ public class Contact {
     private String email;
     private String imagepath;
     private long phone;
-    @Column(length = 500)
+    @Column(length = 1000)
     private String description;
 
     @ManyToOne
