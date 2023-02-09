@@ -20,6 +20,8 @@
                             <form action="#" th:object="${contact}" enctype="multipart/form-data" method="post"
                             th:action="@{/user/process-update}"
                             class="mt-2">
+
+                            <input type="hidden" th:value="${contact.cid}" name="cid">
                             
                             <div class="input-group">
                                 <div class="input-group-prepend m-1">
