@@ -174,4 +174,8 @@ public class Contact {
         this.user = user;
     }
 
+    public boolean equals(Object obj){
+        return this.cid==((Contact)obj).getCid();
+    }
+
 }
