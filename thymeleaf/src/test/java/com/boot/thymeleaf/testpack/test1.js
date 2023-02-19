@@ -1,7 +1,16 @@
-const arr = [10, 20, 30];
-const [a, b = 2, c, d = 0] = arr;
+let obj = {
+    greetingMessage:"Welcome to Scaler Academy",
+    funOne(){
+        console.log(this);
+    },
+    funTwo:()=>{
+        console.log(this);
+    }
+}
 
-console.log(a);
-console.log(b); 
-console.log(c);
-console.log(d);
+obj.funOne();
+let fun = obj.funOne;
+fun();
+obj.funTwo();
+let a = obj.funTwo
+a();
