@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class QualifierController    {
     private CoachQ coachQ;
     @Autowired
-    public QualifierController(@Qualifier("cricketCoachQ") CoachQ cq){
-        this.coachQ=cq;
-    }
+    public QualifierController(CoachQ cq){this.coachQ=cq;}
+//    public QualifierController(@Qualifier("cricketCoachQ") CoachQ cq){
+//        this.coachQ=cq;
+//    }
     @GetMapping("/dailyworkoutQ")
     public String getDailyWorkoutQ(){
         return coachQ.getDailyWorkoutQ();
