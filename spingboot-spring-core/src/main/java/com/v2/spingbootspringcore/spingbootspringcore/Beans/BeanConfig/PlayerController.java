@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PlayerController {
 Player player;
 
-public PlayerController(@Qualifier("footballPlayer") Player player){
+public PlayerController(@Qualifier("cricketer") Player player){
     this.player=player;
 }
 

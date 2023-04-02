@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PlayerConfig
 {
-    @Bean
+    @Bean("cricketer")
     public Player cricketPlayer(){
         return new CricketPlayer();
     }
